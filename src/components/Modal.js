@@ -25,7 +25,7 @@ export class Modal extends React.Component {
         return (
             <React.Fragment>
                 <ModalTrigger triggerText={this.props.modalProps.triggerText} showModal={this.showModal} />
-                {this.state.isShown ? <ModalContent closeModal={this.closeModal} /> : null}
+                {this.state.isShown ? <ModalContent closeModal={this.closeModal} content={this.props.modalContent} /> : null}
             </React.Fragment>
         );
     }

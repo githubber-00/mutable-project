@@ -10,11 +10,17 @@ class App extends React.Component {
         triggerText: 'Launch the Modal!'
     };
 
+    modalContent = (
+        <React.Fragment>
+            <p>Hello From passed modalContent from App!</p>
+        </React.Fragment>
+    );
+
     render() {
         return (
             <div className="App">
                 <Text />
-                <Modal modalProps={this.modalProps} />
+                <Modal modalProps={this.modalProps} modalContent={this.modalContent} />
                 <Text />
                 <Text />
             </div>
