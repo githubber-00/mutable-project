@@ -13,6 +13,7 @@ export class Modal extends React.Component {
         this.setState({
             isShown: true
         }, () => {
+            // put focus on the close button
             this.closeButton.focus();
         });
     };
@@ -21,6 +22,8 @@ export class Modal extends React.Component {
         this.setState({
             isShown: false
         });
+        // put focus on the trigger button
+        this.triggerButton.focus();
     };
 
     onKeyDown = (event) => {
@@ -38,7 +41,11 @@ export class Modal extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <ModalTrigger triggerText={this.props.modalProps.triggerText} showModal={this.showModal} />
+                <ModalTrigger
+                    triggerText={this.props.modalProps.triggerText}
+                    showModal={this.showModal}
+                    buttonRef={n => (this.triggerButton = n)}
+                />
                 {
                     this.state.isShown ? 
                         <ModalContent
