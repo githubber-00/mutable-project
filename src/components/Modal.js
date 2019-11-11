@@ -16,6 +16,8 @@ export class Modal extends React.Component {
             // put focus on the close button
             this.closeButton.focus();
         });
+        // locks the scrolling when the modal is active
+        this.toggleScrollLock();
     };
 
     closeModal = () => {
@@ -24,6 +26,8 @@ export class Modal extends React.Component {
         });
         // put focus on the trigger button
         this.triggerButton.focus();
+        // unlocks the scrolling when the modal is no longer active
+        this.toggleScrollLock();
     };
 
     onKeyDown = (event) => {
@@ -36,6 +40,10 @@ export class Modal extends React.Component {
     onClickOutside = (event) => {
         if (this.modal && this.modal.contains(event.target)) return;
         this.closeModal();
+    };
+
+    toggleScrollLock = () => {
+        document.querySelector('html').classList.toggle('scroll-lock');
     };
 
     render() {
